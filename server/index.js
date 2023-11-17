@@ -19,6 +19,16 @@ app.use("/*", (req, res) => {
 
 // Connect to MongoDB
 // DONT MISUSE THIS THANKYOU!!
-mongoose.connect('mongodb+srv://kirattechnologies:iRbi4XRDdM7JMMkl@cluster0.e95bnsi.mongodb.net/admin?authSource=admin&replicaSet=atlas-ue73sj-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true', { useNewUrlParser: true, useUnifiedTopology: true, dbName: "courses" });
+const connectDB = async () => {
+    try {
+
+await mongoose.connect('mongodb+srv://dheeraj001:Spike12@cluster0.l8foyyc.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, dbName: "courses" });
+console.log('MongoDB Connected...');
+    } catch (err) {
+        console.error(err.message);
+        process.exit(1);
+    }
+}
+connectDB();
 
 app.listen(3000, () => console.log('Server running on port 3000'));
